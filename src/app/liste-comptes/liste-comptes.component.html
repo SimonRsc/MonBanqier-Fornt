@@ -1,0 +1,84 @@
+<div class="wrapperSideBar">
+  <nav id="sideBar">
+    <div style="margin-bottom:20%;">
+
+      <img src="../../assets/piggy-bank.png" alt="" style="width:15%; display: inline-block">
+      <h1 class="brandName">Mon Banquier</h1>
+
+    </div>
+    <h2 style="font-variant: small-caps;"> Tes comptes : </h2>
+    <ul class="list-group">
+      <li *ngFor="let compte of comptes" class="list-group-item list-group-item-action"
+          (click)="selectCompte($event,compte)"
+          id={{compte.id}}>
+        <div class="compteInfo">
+          <div class=" d-flex justify-content-between">
+            <h5>{{compte.nom | titlecase}}</h5>
+            <img class="modifyImg" src="../../assets/pen.svg" onmouseover="this.src='../../assets/penHover.svg'"
+                 onmouseout="this.src='../../assets/pen.svg'" alt="" (click)="showModificationForm($event)">
+          </div>
+          <div>
+            {{compte.description}}
+          </div>
+        </div>
+        <div class="compteModification">
+          <form class="d-flex justify-content-between" (ngSubmit)="modifyCompte(f,compte.id)" #f="ngForm">
+            <div class="formCompteModification">
+              <input type="text" name="compteNom" value="{{compte.nom}}" [ngModel]="compte.nom">
+              <input type="text" name="compteDescription" value="{{compte.description}}"
+                     [ngModel]="compte.description"/>
+            </div>
+            <div class="text-right ">
+              <button class=" btnModifCompte btn btn-custom-primary" type="submit">Modifier</button>
+              <button class="  btnModifCompte btn btn-custom-primary" type="button"
+                      (click)="hideModificationForm($event)">Annuler
+              </button>
+              <button class="  btnModifCompte btn btn-custom-danger" type="button" (click)="deleteCompte(compte.id)">
+                Supprimer
+              </button>
+            </div>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="createCompteDiv">
+    <div id="createCompteForm">
+
+      <form (ngSubmit)="createCompte(f)" #f="ngForm">
+        <hr>
+        <div class="form-group"><label>Nom : </label><input type="text" class="form-control" name="nom" ngModel
+                                                            #name="ngModel" required/>
+          <small *ngIf="f.submitted && name.invalid && name.errors.required" style="color: red"> Nom
+            obligatoire.</small>
+        </div>
+        <div class="form-group"><label>Description : </label><input type="text" class="form-control" name="description"
+                                                                    await ngModel #desc="ngModel" required/>
+          <small *ngIf="f.submitted && desc.invalid &&  desc.errors.required" style="color: red"> Description
+            obligatoire.</small>
+        </div>
+        <div class="form-group d-lg-flex justify-content-lg-center buttonGroup">
+          <button class="btn btn-primary" type="submit">Créer</button>
+          <button class="btn btn-secondary" type="reset" (click)="hideForm()">Annuler</button>
+        </div>
+      </form>
+      <hr>
+      <label>Code de partage :</label>
+      <form (ngSubmit)="addShare(sf)" #sf="ngForm">
+        <div class="form-row">
+          <div class="col-8"><input type="text" class="form-control" name="token" ngModel>
+            <small class="negativeNumber" id="shareError"> !</small>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary">Ajouter !</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <button id="ajoutBudget" type="button" class="btn  btn-primary" name="button" (click)="showForm()">Ajouter
+        un compte !
+      </button>
+  </div>
+</div>
+

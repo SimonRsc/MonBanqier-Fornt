@@ -1,0 +1,184 @@
+<div *ngIf="selectedCompte != null" class="row compteInfo shadow-sm  bg-white ">
+  <div class="col-4 compteNom">
+    <h3 >{{selectedCompte.nom | titlecase}}</h3>
+  </div>
+
+  <div class="col-4">
+    <h5>
+      {{selectedCompte.description}}
+    </h5>
+  </div>
+  <div class="col-2">
+    <h6> C'est le compte  de {{selectedCompte.createurPrenom | titlecase}} </h6>
+  </div>
+  <div class="col-2">
+    <button class="btn-custom btn" id="buttonShare" style="margin-bottom: 3%;margin-top: 3%" (click)="shareLink()">Partager !</button>
+    <div id="shareLink" class="d-none"></div>
+    <div id="shareLinkCopy" style="margin-bottom: 3%;margin-top: 3%"> Code copié!</div>
+  </div>
+</div>
+
+<div *ngIf="selectedCompte != null" class="row rounded keyNumbers bg-white shadow-sm " >
+  <div class="col-md-4">
+    <h1 class="text-left">{{selectedCompte.budgetTotal}}€</h1>
+    <hr>
+    <h5 class="text-left">Budget total</h5>
+
+  </div>
+  <div class="col-md-4">
+    <h1 class="text-center" [ngClass]="{negativeNumber:selectedCompte.budgetTotal - selectedCompte.budgetDepense < 0}">{{selectedCompte.budgetTotal - selectedCompte.budgetDepense}}€</h1>
+    <hr>
+    <h5 class="text-center" > Budget restant</h5>
+  </div>
+  <div class="col-md-4">
+    <h1 class="text-right">{{selectedCompte.budgetDepense}}€</h1>
+    <hr>
+    <h5 class="text-right">Dépenses totales</h5>
+
+  </div>
+</div>
+
+<div class="row monthSelector shadow-sm ">
+  <div *ngFor="let date of listDate ;let index = index;let first = first" class="col-3 text-center"
+       (click)="selectMonth($event,index)">
+    <h5 [ngClass]="{'activeMonth' : first}">
+      {{date | titlecase}}
+    </h5>
+  </div>
+</div>
+
+<div *ngIf="selectedCompte != null" class="row tableWrapper">
+    <div class="col-xl-6 col-12" *ngFor="let budget of selectedCompte.budgets">
+
+      <div class="thead-custom budgetModificationFormWrapper">
+        <form (ngSubmit)="modifyBudget(mf, budget.id,$event)" #mf="ngForm" class="d-flex justify-content-between">
+          <span class=" inputWrapper w-75 d-inline-block">
+            <span class="d-inline-block ">
+              <label >Nom :</label>
+            <input type="text"  value="{{budget.nom}}" name="modificationNom" ngModel="{{budget.nom}}" required #modificationNom="ngModel">
+
+          </span>
+          <span class=" d-inline-block">
+            <label >Montant :</label>
+            <input type="text" value="{{budget.montant}}" class="mustNumber" name="modificationMontant" ngModel="{{budget.montant}}" required #modificationMontant="ngModel">
+          </span>
+          </span>
+          <span class="w-25 text-center">
+            <button class="btn btn-sm btn-custom-primary">Modifier</button>
+            <button class="btn btn-sm btn-custom-primary" type="button" (click)="hideModificationForm($event)">Annuler</button>
+            <button class="btn btn-sm btn-custom-danger"  type="button" (click)="deleteBudget(budget)">Supprimer</button>
+          </span>
+        </form>
+      </div>
+
+      <form (ngSubmit)="addOperation(f,budget.id,$event)" #f="ngForm">
+        <table class="table bg-white rounded shadow-sm">
+          <thead class="thead-custom">
+          <tr>
+            <th  class="col-3 text-left budgetName">{{budget.nom}}</th>
+            <th  class="col-3 text-center">Total : {{budget.montant}}€</th>
+            <th  class="col-4 text-center" >Restant :  <span [ngClass]="{negativeNumber:budget.montantRestant < 0 }"> {{budget.montantRestant}}€</span></th>
+            <th  class=" text-right col-2">
+              <img class="removeImgBudget" src="../../assets/pen.svg"
+                   onmouseover="this.src='../../assets/penHover.svg'" onmouseout="this.src='../../assets/pen.svg'"
+                   alt="" (click)="showModificationForm($event)">
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngIf="budget.operations.length == 0">
+            <td colspan="4" style="text-align: center;">Aucune opérations pour ce budget</td>
+          </tr>
+          <tr *ngFor="let operation of budget.operations">
+            <td>{{operation.date | date:'dd MMM yyyy'}}</td>
+            <td colspan="1" class="text-left">{{operation.description}}</td>
+            <td class="text-center">{{operation.montant}} €</td>
+            <td class="text-right" >
+              <img class="removeImg" src="../../assets/remove.svg" onmouseover="this.src='../../assets/removeHover.svg'"
+                   onmouseout="this.src='../../assets/remove.svg'" alt="" (click)="deleteOperation(operation)">
+            </td>
+          </tr>
+
+          <tr class="form">
+            <td class=""><label>Description : </label><input class="  clearableInput" type="text" name="description" ngModel
+                                                    #description="ngModel" required>
+              <div *ngIf="description.invalid && f.submitted">
+                <small *ngIf="description.errors" style="color: red;">
+                  Description obligatoire.
+                </small>
+              </div>
+            </td>
+            <td class="align-content-end"><label>Montant : </label><input class="mustNumber w-100 clearableInput" type="text" name="montant" ngModel required
+                                                #montant="ngModel">
+              <div *ngIf="montant.invalid && f.submitted">
+                <small *ngIf="montant.errors.required" style="color: red;">
+                  Montant obligatoire.
+                </small>
+              </div>
+
+              <div class="mustNumber">
+                <small  style="color: red;">
+                  Nombre obligatoire.
+                </small>
+              </div>
+            </td>
+
+            <td class="text-right align-bottom">
+              <button  type="submit" class=" btn btn-primary"> Ajouter</button></td>
+
+            <td class="text-right align-bottom ">
+            <button type="button" class=" btn btn-secondary" (click)="f.reset();hideForm($event,f);"> Annuler</button>
+            </td>
+
+          </tr>
+          <tr>
+            <td colspan="4" style="width: 100%;padding-right: 30%; padding-left: 30%;"><span
+              class="ajoutOperation btn" (click)="showForm($event)" >Ajouter une opération ! </span></td>
+          </tr>
+          </tbody>
+        </table>
+      </form>
+  </div>
+</div>
+
+<div *ngIf="selectedCompte != null" class="row d-flex  fixed-bottom addBudget">
+  <div class="col-12 text-center ">
+    <form class="form-inline addBudgetForm" (ngSubmit)="addBudget(f)" #f="ngForm">
+      <div class="form-group"><label>Nom</label><input type="text" class="form-control clearBudgetInput" name="nom"
+                                                       ngModel required #nomBudget="ngModel"/>
+        <div *ngIf="nomBudget.invalid && f.submitted">
+          <small *ngIf="nomBudget.errors.required" style="color: red;">
+            Nom obligatoire.
+          </small>
+        </div>
+      </div>
+        <div class="form-group"><label>Budget </label><input  type="text" class=" mustNumber form-control clearBudgetInput"
+                                                             name="montant" ngModel required #budgetMontant="ngModel"  />
+
+          <div *ngIf="budgetMontant.invalid && f.submitted">
+            <small *ngIf="budgetMontant.errors" style="color: red;">
+               Montant obligatoire.
+            </small>
+          </div>
+          <div class="mustNumber">
+            <small style="color: red;">
+              Nombre uniquement !
+            </small>
+          </div>
+
+        </div>
+        <input id="compteIdInput" name="compteId" hidden ngModel="{{selectedCompte.id}}"/>
+        <button class="btn btn-primary" type="submit" [disabled]="selectedMonth != currentMonth" >Ajouter !</button>
+        <button class="btn btn-secondary" type="button" (click)="hideBudgetForm(f)">Annuler !</button>
+    </form>
+  </div>
+  <div class=" d-flex w-100 justify-content-between">
+    <button class=" ajoutBudget text-center  btn btn-custom" [disabled]="selectedMonth != currentMonth" (click)="showBudgetForm()">
+      Ajouter un budget !
+    </button>
+    <button class=" ajoutBudget text-center btn btn-custom " [disabled]="selectedMonth != currentMonth" (click)="addDefaultBudget()">
+      Ajouter les budgets par défaut !
+    </button>
+  </div>
+
+</div>

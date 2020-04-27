@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-7">
+      <form id="inscriptionForm" (ngSubmit)="inscription(f)" #f="ngForm">
+        <h5>Inscription</h5>
+        <hr>
+        <div id="alertInscription" class=" alert alert-danger" ></div>
+        <div class="form-row">
+          <div class="col-6">
+            <label>Prenom</label><input type="text" class="form-control" name="prenom" ngModel required #prenom="ngModel"/>
+            <div *ngIf="f.submitted && prenom.errors && prenom.errors.required">
+              <small style="color:red;">Prénom obligatoire</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <label>Nom</label><input type="text" class="form-control" name="nom" ngModel required #nom="ngModel"/>
+            <div *ngIf="f.submitted && nom.errors && nom.errors.required">
+              <small style="color:red;">Nom obligatoire</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Email</label><input type="email" class="form-control" name="email" ngModel required #email="ngModel"/>
+          <div *ngIf="f.submitted && email.errors && email.errors.required">
+            <small style="color:red;">Email obligatoire</small>
+          </div>
+
+        </div>
+        <div class="form-row">
+          <div class="col-6">
+            <label>Mot de passe</label><input type="password" class="form-control" name="password" ngModel required #password="ngModel" />
+            <div *ngIf="f.submitted && password.errors && password.errors.required">
+              <small style="color:red;">Mot de passe obligatoire</small>
+            </div>
+            <div *ngIf="f.submitted" class="notSamePassword">
+              <small style="color:red;">Les mots de passes ne correspondent pas !</small>
+            </div>
+          </div>
+          <div class="col-6">
+            <label>Confirmation</label><input type="password" class="form-control" name="passwordConf" ngModel #confPass="ngModel" required />
+            <div *ngIf="f.submitted && confPass.errors && confPass.errors.required">
+              <small style="color:red;">Vous devez confirmer le mot de passe</small>
+            </div>
+            <div *ngIf="f.submitted " class="notSamePassword">
+              <small style="color:red;">Les mots de passes ne correspondent pas !</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row d-lg-flex justify-content-lg-center buttonGroup">
+          <div class="col-6 text-right">
+            <button class="btn  btn-primary" type="submit">S'inscrire</button>
+          </div>
+          <div class="col-6 text-left">
+            <a class="btn btn-custom" routerLink="['Connexion']">Annuler</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-3  connexionContent d-flex align-content-center justify-content-center">
+      <h4>Mon Banquier</h4>
+    </div>
+    <div class="col-2 connexionContent d-flex align-content-center justify-content-center">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3  connexionContent d-flex align-content-center justify-content-center">
+    </div>
+    <div class="col-3 connexionContent d-flex align-content-center justify-content-center">
+      <h4>Mon Banquier</h4>
+    </div>
+    <div class="col-5">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <h5>Connexion</h5>
+        <hr>
+        <div id="alertConnexion" class="alert alert-danger" (click)="hideAlert()"></div>
+        <div class="form-group"><label>Email</label><input type="email" class="form-control" name="email" ngModel required #email="ngModel"/>
+        <small *ngIf="f.submitted && email.errors && email.errors.required" style="color: red"> Adresse mail obligatoire. </small>
+        </div>
+        <div class="form-group"><label>Mot de passe</label><input type="password" class="form-control" name="password" ngModel required #mdp="ngModel"/></div>
+        <small *ngIf="f.submitted && mdp.errors && mdp.errors.required" style="color: red"> Mot de passe obligatoire. </small>
+
+        <div class="form-group d-lg-flex justify-content-lg-center buttonGroup"><button class="btn btn-primary" type="submit">Connexion</button><button class="btn btn-custom" routerLink="/Inscription">Inscription</button></div>
+      </form>
+    </div>
+  </div>
+</div>

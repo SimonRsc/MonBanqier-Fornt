@@ -1,0 +1,12 @@
+<nav class="navbar shadow-sm navbar-expand-lg navbar-light ">
+  <div  id="navbarNavAltMarkup" class="d-flex justify-content-between w-100">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link " routerLink="/Comptes" [routerLinkActive]="['active']">Gérer mes comptes</a>
+      <a class="nav-item nav-link" routerLink="/DefaultBudget"  [routerLinkActive]="['active']" >Budgets par défaut</a>
+    </div>
+    <div class="navbar-nav nav-right">
+      <a class="nav-item nav-link">{{user.prenom | titlecase}} </a>
+      <a class=" nav-item btn btn-custom"  (click)="deconnexion()">Déconnexion</a>
+    </div>
+  </div>
+</nav>

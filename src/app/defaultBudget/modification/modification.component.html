@@ -1,0 +1,73 @@
+<div *ngIf="selectedCompte != null" class="row compteInfo shadow  bg-white">
+  <div class="col-6 compteNom">
+    <h3 >{{selectedCompte.nom | titlecase}}</h3>
+  </div>
+
+  <div class="col-6">
+    <h5 >
+      {{selectedCompte.description}}
+    </h5>
+  </div>
+</div>
+
+
+
+<div *ngIf="selectedCompte != null" class="row  shadow-sm rounded bg-white ajoutModelRow">
+  <div class="col-12 ">
+    <h3>Ajouter un budget par défaut :</h3>
+    <hr>
+  </div>
+
+
+  <div class="col-12  text-center d-flex">
+    <form class="form-inline addBudgetForm " (ngSubmit)="addModelBudget(f)" #f="ngForm">
+      <div class="form-group"><label>Nom</label><input type="text" class="form-control clearBudgetInput" name="nom"
+                                                       ngModel required #nomBudget="ngModel"/>
+        <div *ngIf="nomBudget.invalid && f.submitted">
+          <small *ngIf="nomBudget.errors.required" style="color: red;">
+            Nom obligatoire.
+          </small>
+        </div>
+      </div>
+      <div class="form-group"><label>Budget </label><input  type="text" class="form-control clearBudgetInput"
+                                                            name="montant" ngModel required #budgetMontant="ngModel" />
+        <div *ngIf="budgetMontant.invalid && f.submitted">
+          <small *ngIf="budgetMontant.errors" style="color: red;">
+            Montant obligatoire.
+          </small>
+        </div></div>
+
+      <input id="compteIdInput" name="compteId" hidden ngModel="{{selectedCompte.id}}"/>
+      <button class="btn btn-primary" type="submit">Ajouter !</button>
+      <button class="btn btn-secondary" type="reset" >Annuler !</button>
+    </form>
+  </div>
+</div>
+<div class="row budgetListeRow">
+  <div class="col-12 d-flex justify-content-center">
+    <ul class="list-group shadow-sm ">
+      <li class="list-group-item">
+         <span class="w-50">
+          <span class="budgetModelTotal" > Budgets par défaut</span>
+        </span>
+        <span class="w-25 text-right">
+          <span class=" budgetTotalNumber"> {{budgetTotal}} €</span>
+        </span>
+      </li>
+      <li *ngFor="let budget of modelBudget" class="list-group-item">
+        <span class="w-25">
+          <span class="budgetModelName" > {{budget.nom | titlecase}}</span>
+        </span>
+        <span class="w-50 text-right">
+          <span class=" budgetModelNumber"> {{budget.montant}}€ </span>
+        </span>
+        <span class="w-25 text-right">
+          <img class="removeImg" src="../../assets/remove.svg" onmouseover="this.src='../../assets/removeHover.svg'"
+               onmouseout="this.src='../../assets/remove.svg'" alt="" (click)="deleteBudget(budget)">
+        </span>
+          </li>
+      <li *ngIf="modelBudget.length == 0 " class=" list-group-item  w-100 "> Aucun budget par défaut pour ce compte !  </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+.wrapper {
+  max-width: 100%;
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.alertMain:hover {
+  cursor: pointer;
+}
+
+
+.container-fluid{
+  min-height: 100vh;
+  height: 100%;
+  padding: 0;
+    background-color: #F4F7F6 ;
+}
+
+#modificationWrapper{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+

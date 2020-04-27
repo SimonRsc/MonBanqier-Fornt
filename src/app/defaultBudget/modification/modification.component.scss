@@ -1,0 +1,99 @@
+$firstColor:#055E54;
+$firstColorHover:#03453D;
+$firstColorBorder:#09AB98;
+$secondColor: #AB8C00;
+$secondColorHover: rgba(147,121,0);
+.info{
+padding-left: 2%;
+padding-right: 2%;
+  padding-top: 1%;
+}
+
+h3{
+  font-family: Montserrat, sans-serif;
+}
+
+
+.compteInfo{
+  height: 7vh;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  font-family: Montserrat ;
+  text-align: center;
+  font-weight: bold;
+  color: #303030;
+  margin-bottom: 2%;
+  .compteNom{
+    color: #055E54;
+
+  }
+}
+
+form.addBudgetForm{
+  width: 100%;
+  text-align: center;
+
+  label{
+    margin-right: 10px;
+  }
+  .form-group,.btn{
+    margin-right: 2%;
+  }
+
+}
+
+
+.btn-primary {
+  margin-bottom: 1%;
+  margin-top: 1%;
+  background: #055E54;
+  border: none;
+
+  &:hover, &:active, &:visited , &:focus{
+    background-color: $firstColorHover !important;
+    box-shadow: none !important;
+  }
+}
+
+.removeImg{
+  width:4%;
+  min-width: 20px;
+}
+
+.budgetListeRow{
+  margin-top: 3%;
+
+}
+.budgetModelName{
+  font-size: 150%;
+}
+.budgetModelTotal{
+  font-family: Montserrat, sans-serif;
+  font-size: 150%;
+  color: $firstColor;
+}
+.budgetTotalNumber{
+  font-family: Montserrat, sans-serif;
+  font-size: 125%;
+color: $firstColor;
+}
+.budgetModelNumber{
+  font-size: 125%;
+}
+hr{
+  background-color: #F4F7F6;
+}
+.ajoutModelRow{
+  padding: 1%;
+}
+li{
+  display: flex;
+  align-items: center;
+
+}
+ul{
+  width: 60%;
+
+}
+

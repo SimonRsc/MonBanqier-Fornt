@@ -1,0 +1,132 @@
+$firstColor:#055E54;
+$firstColorHover: #03453D;
+$secondColor: #AB8C00;
+$secondColorHover: rgba(147,121,0);
+.brandName{
+  margin-bottom: 0;
+  margin-left: 2%;
+  display: inline;
+  vertical-align: bottom;
+  font-family: Montserrat,sans-serif;
+}
+h2{
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 5%;
+}
+#sideBar{
+  padding:1%;
+  margin-top: 0;
+}
+#createCompteDiv{
+  padding:1%;
+  color: white;
+  input{
+    background-color: rgba(0,0,0,0);
+    border-color: white;
+    color:white;
+  }
+  .btn-primary{
+      background-color: $secondColor !important;
+      border:none !important;
+  } .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: $secondColorHover !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+}
+
+#ajoutBudget{
+width: 100%;
+margin-top: 5%;
+}
+
+#createCompteForm{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  padding:2%;
+
+  .btn{
+    margin-right: 2%;
+  }
+}
+
+.wrapperSideBar{
+  padding: 1%;
+  background-color: #055E54;
+  height: 100%;
+  min-height: 100vh;
+  color: white;
+
+}
+
+li{
+  background-color: rgba(0,0,0,0);
+  color: white;
+  &:hover{
+    background-color: rgba(0,0,0,0);
+    border: 2px solid $secondColor;
+    color:white;
+  }
+}
+
+hr{
+  border-color: $secondColor;
+}
+
+.modifyImg{
+  width:7%;
+  cursor: pointer;
+  height: 7%;
+}
+
+.formCompteModification{
+  input{
+    background-color: transparent;
+    margin-bottom: 2%;
+    border: 1px solid $firstColorHover;
+    border-radius: 5px;
+    color: white;
+    padding:3%;
+  }
+}
+
+.btnModifCompte {
+  color: white;
+  width: 80%;
+  text-align: center;
+}
+
+.btn-custom-danger {
+  margin-bottom: 1%;
+  margin-top: 1%;
+  background-color: transparent;
+  border: 1px solid #ff7075;
+  color: #ff7075;
+
+  &:hover, &:active, &:visited , &:focus{
+    background-color: #ff7075 !important;
+    color: white;
+    box-shadow: none !important;
+  }
+}
+
+.btn-custom-primary {
+  margin-bottom: 1%;
+  margin-top: 1%;
+  background-color: transparent;
+  border: 1px solid $secondColor;
+  color: $secondColor;
+
+  &:hover, &:active, &:visited , &:focus{
+    background-color: $secondColor !important;
+    color: white;
+    box-shadow: none !important;
+  }
+}
+.compteModification{
+  display: none;
+}
+.negativeNumber {
+  color: #ff7075;
+}
