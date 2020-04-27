@@ -9,7 +9,7 @@ import * as cryptoJS from 'crypto-js';
 export class AuthentificationService {
   user: User;
   isAuth: boolean;
-
+  private urlConnect = 'https://monbanquier-backend.herokuapp.com/connect/';
   constructor(private http: HttpClient, private router: Router) {
     this.isAuth = false;
     this.user = null;
@@ -19,7 +19,7 @@ export class AuthentificationService {
 
     const identifiant = {nom: params.nom, prenom: params.prenom, password: cryptoJS.SHA256(params.password).toString(), email: params.email};
     try {
-      await this.http.post<any>('http://localhost:3000/connect/new', {data: JSON.stringify(identifiant)}).toPromise();
+      await this.http.post<any>(this.urlConnect + 'new', {data: JSON.stringify(identifiant)}).toPromise();
     }
     catch (e) {
       result.error = true;
@@ -42,7 +42,7 @@ export class AuthentificationService {
       connection: false,
       message: 'Identifiants incorrects ! Vérifiez votre adresse mail et mot de passe'
     };
-    const data = await this.http.post<any>('http://localhost:3000/connect',
+    const data = await this.http.post<any>(this.urlConnect ,
       {data: JSON.stringify(identifiant)}).toPromise().catch((err) => {
       result.error = true;
       result.message =  err.error.message;
