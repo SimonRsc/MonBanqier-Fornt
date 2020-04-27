@@ -20,6 +20,8 @@ import {ViewComponent} from './defaultBudget/view/view.component';
 import {ModificationComponent} from './defaultBudget/modification/modification.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {AuthInterceptor} from './services/authentificationInterceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {AuthInterceptor} from './services/authentificationInterceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthentificationService, ListComptesService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
