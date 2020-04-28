@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="row align-items-center justify-content-center">
-    <div class="col-4 col-xl-6 connexionContent ">
-      <h4>Mon Banquier</h4>
+  <div class="row align-items-center  justify-content-center">
+    <div class="col-4 col-xl-6 connexionContent align-items-center d-flex justify-content-end">
+      <span>Mon Banquier</span>
     </div>
     <div class="col-xl-6 col-8 " >
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group"><label>Mot de passe</label><input type="password" class="form-control" name="password" ngModel required #mdp="ngModel"/></div>
         <small *ngIf="f.submitted && mdp.errors && mdp.errors.required" style="color: red"> Mot de passe obligatoire. </small>
-        <div class="form-group d  -lg-flex justify-content-lg-center buttonGroup"><button class="btn btn-primary" type="submit">Connexion</button><button class="btn btn-custom" routerLink="/Inscription">Inscription</button></div>
+        <div class="form-group d-flex justify-content-center buttonGroup"><button class="btn btn-primary" type="submit">Connexion</button><button class="btn btn-custom" routerLink="/Inscription">Inscription</button></div>
       </form>
     </div>
   </div>

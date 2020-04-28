@@ -4,17 +4,16 @@ $firstColorBorder: #09AB98;
 $secondColor: #AB8C00;
 $secondColorHover: rgba(147, 121, 0);
 
-.row .container-fluid{
+ .container-fluid{
   height:100vh;
 }
 
-/*form{
+form{
   width: 90%;
   margin-left: 5%;
-  margin-top: 30%;
   padding: 5%;
 
-}*/
+}
 
 .buttonGroup button{
   margin-right: 3%;
@@ -30,13 +29,19 @@ $secondColorHover: rgba(147, 121, 0);
   color:white;
   height: 100vh;
 }
-h4{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+span{
+  margin-right: 10%;
+  font-size: 300%;
   font-weight: bold;
   font-family: Montserrat,sans-serif;
-  font-variant: small-caps   ;
+  font-variant: small-caps;
+}
+@media screen and (max-width:991.98px) {
+
+  span {
+    font-size: 150%;
+
+  }
 }
 h5{
   display: flex;
