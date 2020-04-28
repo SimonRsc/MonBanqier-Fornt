@@ -8,8 +8,7 @@ $secondColorHover: rgba(147, 121, 0);
   height:100vh;
 }
 #inscriptionForm{
-  padding:5%;
-  margin-top: 17%;
+  padding:3%;
   .form-row{
     margin-bottom: 2%;
   }
@@ -34,13 +33,19 @@ $secondColorHover: rgba(147, 121, 0);
   height: 100vh;
 }
 h4{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-left: 10%;
+
   font-weight: bold;
   font-size: 300%;
   font-family: Montserrat,sans-serif;
   font-variant: small-caps   ;
+}
+@media screen and (max-width:991.98px) {
+  h4 {
+    font-size: 125%;
+    margin-left: 0;
+
+  }
 }
 img{
   width: 200px;
