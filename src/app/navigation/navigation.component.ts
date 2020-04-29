@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../services/authentification.service';
-import {User} from "../model/user.model";
+import {User} from '../model/user.model';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -20,4 +21,7 @@ export class NavigationComponent implements OnInit {
     this.authService.logout();
   }
 
+  toggleCollapse(){
+    $('.navbar-collapse').slideToggle();
+  }
 }

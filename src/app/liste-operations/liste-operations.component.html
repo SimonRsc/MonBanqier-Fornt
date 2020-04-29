@@ -1,36 +1,39 @@
-<div *ngIf="selectedCompte != null" class="row compteInfo shadow-sm  bg-white ">
-  <div class="col-4 compteNom">
+
+<div *ngIf="selectedCompte != null" class="row  w-100 compteInfo shadow-sm  bg-white  ">
+  <div class=" col-12 col-lg-4 compteNom my-auto">
     <h3 >{{selectedCompte.nom | titlecase}}</h3>
   </div>
 
-  <div class="col-4">
+  <div class=" col-12  col-lg-4 my-auto">
     <h5>
       {{selectedCompte.description}}
     </h5>
   </div>
-  <div class="col-2">
+  <div class=" col-12 col-lg-2 my-auto">
     <h6> C'est le compte  de {{selectedCompte.createurPrenom | titlecase}} </h6>
   </div>
-  <div class="col-2">
-    <button class="btn-custom btn" id="buttonShare" style="margin-bottom: 3%;margin-top: 3%" (click)="shareLink()">Partager !</button>
+
+  <div class="col-12 col-lg-2 my-auto">
+    <button class="btn-custom btn btn-sm" id="buttonShare" style="margin-bottom: 3%;margin-top: 3%" (click)="shareLink()">Partager !</button>
     <div id="shareLink" class="d-none"></div>
     <div id="shareLinkCopy" style="margin-bottom: 3%;margin-top: 3%"> Code copié!</div>
   </div>
 </div>
 
-<div *ngIf="selectedCompte != null" class="row rounded keyNumbers bg-white shadow-sm " >
-  <div class="col-md-4">
+
+<div *ngIf="selectedCompte != null" class="row w-100 rounded keyNumbers bg-white shadow-sm " >
+  <div class="col-4">
     <h1 class="text-left">{{selectedCompte.budgetTotal}}€</h1>
     <hr>
     <h5 class="text-left">Budget total</h5>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-4">
     <h1 class="text-center" [ngClass]="{negativeNumber:selectedCompte.budgetTotal - selectedCompte.budgetDepense < 0}">{{selectedCompte.budgetTotal - selectedCompte.budgetDepense}}€</h1>
     <hr>
     <h5 class="text-center" > Budget restant</h5>
   </div>
-  <div class="col-md-4">
+  <div class="col-4">
     <h1 class="text-right">{{selectedCompte.budgetDepense}}€</h1>
     <hr>
     <h5 class="text-right">Dépenses totales</h5>
@@ -38,7 +41,7 @@
   </div>
 </div>
 
-<div class="row monthSelector shadow-sm ">
+<div class="row w-100 monthSelector shadow-sm ">
   <div *ngFor="let date of listDate ;let index = index;let first = first" class="col-3 text-center"
        (click)="selectMonth($event,index)">
     <h5 [ngClass]="{'activeMonth' : first}">
@@ -47,7 +50,8 @@
   </div>
 </div>
 
-<div *ngIf="selectedCompte != null" class="row tableWrapper">
+
+<div *ngIf="selectedCompte != null" class="row w-100 tableWrapper">
     <div class="col-xl-6 col-12" *ngFor="let budget of selectedCompte.budgets">
 
       <div class="thead-custom budgetModificationFormWrapper">
@@ -72,7 +76,7 @@
       </div>
 
       <form (ngSubmit)="addOperation(f,budget.id,$event)" #f="ngForm">
-        <table class="table bg-white rounded shadow-sm">
+        <table class="table table-responsive bg-white rounded shadow-sm">
           <thead class="thead-custom">
           <tr>
             <th  class="col-3 text-left budgetName">{{budget.nom}}</th>
@@ -100,7 +104,7 @@
           </tr>
 
           <tr class="form">
-            <td class=""><label>Description : </label><input class="  clearableInput" type="text" name="description" ngModel
+            <td class="col-4"><label>Description</label><input class=" w-100 clearableInput" type="text" name="description" ngModel
                                                     #description="ngModel" required>
               <div *ngIf="description.invalid && f.submitted">
                 <small *ngIf="description.errors" style="color: red;">
@@ -108,7 +112,7 @@
                 </small>
               </div>
             </td>
-            <td class="align-content-end"><label>Montant : </label><input class="mustNumber w-100 clearableInput" type="text" name="montant" ngModel required
+            <td class="align-content-end col-4"><label>Montant</label><input class="mustNumber w-100 clearableInput" type="text" name="montant" ngModel required
                                                 #montant="ngModel">
               <div *ngIf="montant.invalid && f.submitted">
                 <small *ngIf="montant.errors.required" style="color: red;">
@@ -123,10 +127,10 @@
               </div>
             </td>
 
-            <td class="text-right align-bottom">
+            <td class="text-right align-bottom col-2">
               <button  type="submit" class=" btn btn-primary"> Ajouter</button></td>
 
-            <td class="text-right align-bottom ">
+            <td class="text-right align-bottom col-2">
             <button type="button" class=" btn btn-secondary" (click)="f.reset();hideForm($event,f);"> Annuler</button>
             </td>
 
@@ -140,6 +144,7 @@
       </form>
   </div>
 </div>
+
 
 <div *ngIf="selectedCompte != null" class="row d-flex  fixed-bottom addBudget">
   <div class="col-12 text-center ">

@@ -156,16 +156,21 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
   showBudgetForm() {
     $('.ajoutBudget').hide();
     $('div.mustNumber').hide();
-
     $('.addBudgetForm').addClass('d-flex').addClass('justify-content-between').show();
+    $('.addBudgetForm').addClass('active');
+    $('.addBudget').addClass('active');
   }
 
   hideBudgetForm(form: NgForm) {
+    $('.addBudgetForm').removeClass('active');
+    $('.addBudget').removeClass('active');
     $('.clearBudgetInput').val('');
     $('div.mustNumber').hide();
 
     $('.addBudgetForm').hide().removeClass('d-flex').removeClass('justify-content-between');
     $('.ajoutBudget').show();
+
+
   }
 
  async  modifyBudget(form: NgForm, budgetId, event){

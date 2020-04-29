@@ -1,12 +1,15 @@
-<nav class="navbar shadow-sm navbar-expand-lg navbar-light ">
-  <div  id="navbarNavAltMarkup" class="d-flex justify-content-between w-100">
-    <div class="navbar-nav">
+<nav class="navbar shadow-sm navbar-expand-lg navbar-light justify-content-between ">
+  <button class="navbar-toggler" type="button" (click)="toggleCollapse()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav ">
       <a class="nav-item nav-link " routerLink="/Comptes" [routerLinkActive]="['active']">Gérer mes comptes</a>
       <a class="nav-item nav-link" routerLink="/DefaultBudget"  [routerLinkActive]="['active']" >Budgets par défaut</a>
     </div>
-    <div class="navbar-nav nav-right">
-      <a class="nav-item nav-link">{{user.prenom | titlecase}} </a>
-      <a class=" nav-item btn btn-custom"  (click)="deconnexion()">Déconnexion</a>
-    </div>
+  </div>
+  <div class="navbar-nav nav-right  d-inline-block text-right">
+    <a class="">{{user.prenom | titlecase}} </a>
+    <a class="btn btn-custom"  (click)="deconnexion()">Déconnexion</a>
   </div>
 </nav>

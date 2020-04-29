@@ -1,32 +1,53 @@
-  .wrapper {
-    max-width: 100%;
-    display: flex;
-    align-items: stretch;
+.wrapper {
+  max-width: 100%;
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  height: 100%;
+}
+
+#sideBar {
+  min-width: 20%;
+  max-width: 20%;
+  min-height: 100vh;
+  margin-left: 0;
+}
+
+#sideBar.active {
+  margin-left: -20%;
+}
+
+@media screen and (max-width: 991.98px) {
+  #sideBar {
+    min-width: 50%;
+    max-width: 50%;
     min-height: 100vh;
-    height: 100%;
+    margin-left: -50%;
   }
-
-  .alertMain:hover {
-    cursor: pointer;
+  #sideBar.active {
+    margin-left: 0%;
   }
-
-  .alertMain{
-  }
+}
 
 
-  .container-fluid{
-    min-height: 100vh;
-    height: 100%;
-    padding: 0;
-   background-color: #F4F7F6 ;
 
-  }
+.alertMain:hover {
+  cursor: pointer;
+}
 
-  #listOperationWrapper{
-    margin-left: 2%;
-    margin-right: 2%;
-  }
 
-  body, .wrapper{
-    background-color: #F4F7F6;
-  }
+.container-fluid {
+  min-height: 100vh;
+  height: 100%;
+  padding: 0;
+  background-color: #F4F7F6;
+}
+
+#listOperationWrapper {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+body, .wrapper {
+  background-color: #F4F7F6;
+}

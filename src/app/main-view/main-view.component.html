@@ -1,11 +1,14 @@
+<script src="../authentification/authentification.component.spec.ts"></script>
 <div class="wrapper">
-  <app-liste-comptes style="width:20%;"></app-liste-comptes>
+  <div id="sideBar">
+    <app-liste-comptes></app-liste-comptes>
+  </div>
 
-  <div class="container-fluid" style="width:80%;">
+  <div class="container-fluid">
     <app-navigation></app-navigation>
     <div id="listOperationWrapper">
       <div class="alert alertMain" (click)="hideAlert()"></div>
-      <app-liste-operations></app-liste-operations>
+      <app-liste-operations class="d-block" style="margin:0;"></app-liste-operations>
     </div>
   </div>
 </div>

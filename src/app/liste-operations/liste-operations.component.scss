@@ -3,21 +3,23 @@ $firstColorHover: #03453D;
 $firstColorBorder: #09AB98;
 $secondColor: #AB8C00;
 $secondColorHover: rgba(147, 121, 0);
-
+.row{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
 .compteInfo {
-  height: 7vh;
-  display: flex;
-  align-content: center;
-  align-items: center;
+
   font-family: Montserrat;
   text-align: center;
   font-weight: bold;
   color: #303030;
+  min-height: 80px;
   margin-bottom: 2%;
-
   .compteNom {
     color: #055E54;
-
+  }
+ h3, h5, h6{
+    margin-bottom: 0;
   }
 }
 
@@ -77,6 +79,7 @@ $secondColorHover: rgba(147, 121, 0);
 
 tr.form {
   display: none;
+
 }
 
 .ajoutBudget {
@@ -116,7 +119,7 @@ tr.form {
 .addBudget {
   width: 80%;
   height: 6%;
-  margin-left: 20%;
+  margin-left: 20% !important;
   background-color: white;
   box-shadow: 15px -5px 15px 5px #E0E0E0;
 
@@ -131,6 +134,30 @@ tr.form {
   }
 
 }
+
+@media screen and (max-width: 991.98px) {
+.addBudget{
+  width: 100%;
+  margin-left:0 !important;
+  min-height: 10%;
+}
+
+
+  .active.addBudgetForm{
+    display: inline-block !important;
+  }
+  .active.addBudget{
+    padding-top: 3%;
+    height:35%;
+    transition: height 100ms;
+  }
+
+  .keyNumbers h1{
+    font-size: 150% ;
+  }
+
+}
+
 
 .btn-primary {
   margin-bottom: 1%;
