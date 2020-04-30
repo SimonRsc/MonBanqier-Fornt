@@ -64,7 +64,7 @@
           </span>
           <span class=" d-inline-block">
             <label >Montant :</label>
-            <input type="text" value="{{budget.montant}}" class="mustNumber" name="modificationMontant" ngModel="{{budget.montant}}" required #modificationMontant="ngModel">
+            <input  pattern="[0-9]*" type="text" value="{{budget.montant}}" class="mustNumber" name="modificationMontant" ngModel="{{budget.montant}}" required #modificationMontant="ngModel">
           </span>
           </span>
           <span class="w-25 text-center">
@@ -112,7 +112,7 @@
                 </small>
               </div>
             </td>
-            <td class="align-content-end col-4"><label>Montant</label><input class="mustNumber w-100 clearableInput" type="text" name="montant" ngModel required
+            <td class="align-content-end col-4"><label>Montant</label><input  pattern="[0-9]*" class="mustNumber w-100 clearableInput" type="text" name="montant" ngModel required
                                                 #montant="ngModel">
               <div *ngIf="montant.invalid && f.submitted">
                 <small *ngIf="montant.errors.required" style="color: red;">
@@ -157,7 +157,7 @@
           </small>
         </div>
       </div>
-        <div class="form-group"><label>Budget </label><input  type="text" class=" mustNumber form-control clearBudgetInput"
+        <div class="form-group"><label>Budget </label><input   pattern="[0-9]*" type="text" class=" mustNumber form-control clearBudgetInput"
                                                              name="montant" ngModel required #budgetMontant="ngModel"  />
 
           <div *ngIf="budgetMontant.invalid && f.submitted">
