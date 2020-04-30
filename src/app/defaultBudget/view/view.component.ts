@@ -17,4 +17,10 @@ export class ViewComponent implements OnInit {
   hideAlert(){
     $('.alertMain').hide(1000);
   }
+
+  toggleSidebar(){
+    $('#sideBar').toggleClass('active');
+    $('#filtre').toggle();
+    $('#expandButton').toggleClass('active');
+  }
 }

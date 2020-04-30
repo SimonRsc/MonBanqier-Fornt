@@ -80,8 +80,8 @@
           <thead class="thead-custom">
           <tr>
             <th  class="col-2 text-left budgetName">{{budget.nom}}</th>
-            <th  class="col-4 text-center">Total : {{budget.montant}}€</th>
-            <th  class="col-4 text-center" >Restant :  <span [ngClass]="{negativeNumber:budget.montantRestant < 0 }"> {{budget.montantRestant}}€</span></th>
+            <th  class="col-4 text-right text-lg-center">Total : {{budget.montant}}€</th>
+            <th  class="col-4  text-right text-lg-center" >Restant :  <span [ngClass]="{negativeNumber:budget.montantRestant < 0 }"> {{budget.montantRestant}}€</span></th>
             <th  class=" text-right col-2">
               <img class="removeImgBudget" src="../../assets/pen.svg"
                    onmouseover="this.src='../../assets/penHover.svg'" onmouseout="this.src='../../assets/pen.svg'"

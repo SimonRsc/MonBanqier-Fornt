@@ -3,6 +3,25 @@ $firstColorHover:#03453D;
 $firstColorBorder:#09AB98;
 $secondColor: #AB8C00;
 $secondColorHover: rgba(147,121,0);
+.row{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+.compteInfo {
+
+  font-family: Montserrat;
+  text-align: center;
+  font-weight: bold;
+  color: #303030;
+  min-height: 80px;
+  margin-bottom: 2%;
+  .compteNom {
+    color: #055E54;
+  }
+  h3, h5, h6{
+    margin-bottom: 0;
+  }
+}
 .info{
 padding-left: 2%;
 padding-right: 2%;
@@ -94,6 +113,13 @@ li{
 }
 ul{
   width: 60%;
-
 }
 
+@media screen and (max-width: 991.98px) {
+  ul{
+    width: 100%;
+  }
+  .ajoutModelRow h3 {
+    font-size: 130%;
+  }
+}

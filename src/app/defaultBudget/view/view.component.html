@@ -1,14 +1,18 @@
 <div class="wrapper">
-  <app-liste-comptes style="width:20%;"></app-liste-comptes>
-
-  <div class="container-fluid" style="width:80%;">
+  <div id="sideBar">
+    <app-liste-comptes></app-liste-comptes>
+  </div>
+  <div id="expandButton" class="d-flex align-items-center justify-content-center" (click)="toggleSidebar()" style="cursor: pointer; z-index: 1">
+    <div id="expandWay" (click)="toggleSidebar()">  </div>
+  </div>
+  <div class="container-fluid">
     <app-navigation></app-navigation>
-    <div class="row">
-      <div class="alert alertMain " (click)="hideAlert()">
-      </div>
-    </div>
     <div id="modificationWrapper">
-<app-modification></app-modification>
+      <app-modification></app-modification>
     </div>
   </div>
+
+  <div id="filtre" (click)="toggleSidebar()"></div>
+
+
 </div>
