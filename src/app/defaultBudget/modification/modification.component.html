@@ -34,7 +34,7 @@
             </div>
           </div>
             <div class="col-6 text-left text-lg-center">
-            <label class="d-inline-block">Budget </label><input  pattern="[0-9]*" type="text" class="d-inline-block w-50 form-control clearBudgetInput"
+            <label class="d-inline-block">Budget </label><input inputmode="numeric"  type="text" class="d-inline-block w-50 form-control clearBudgetInput"
                                           name="montant" ngModel required #budgetMontant="ngModel" />
             <div *ngIf="budgetMontant.invalid && f.submitted">
               <small *ngIf="budgetMontant.errors" style="color: red;">
