@@ -3,7 +3,10 @@
   <div id="sideBar">
     <app-liste-comptes></app-liste-comptes>
   </div>
+  <div id="expandButton" class="d-flex align-items-center justify-content-center" (click)="toggleSidebar()">
+    <div id="expandWay" >  </div>
 
+  </div>
   <div class="container-fluid">
     <app-navigation></app-navigation>
     <div id="listOperationWrapper">
@@ -11,4 +14,8 @@
       <app-liste-operations class="d-block" style="margin:0;"></app-liste-operations>
     </div>
   </div>
+
+  <div id="filtre"></div>
+
+
 </div>

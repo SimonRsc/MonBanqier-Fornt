@@ -135,29 +135,6 @@ tr.form {
 
 }
 
-@media screen and (max-width: 991.98px) {
-.addBudget{
-  width: 100%;
-  margin-left:0 !important;
-  min-height: 10%;
-}
-
-
-  .active.addBudgetForm{
-    display: inline-block !important;
-  }
-  .active.addBudget{
-    padding-top: 3%;
-    height:35%;
-    transition: height 100ms;
-  }
-
-  .keyNumbers h1{
-    font-size: 150% ;
-  }
-
-}
-
 
 .btn-primary {
   margin-bottom: 1%;
@@ -260,3 +237,30 @@ table {
 #shareLinkCopy{
   display: none;
 }
+
+
+@media screen and (max-width: 991.98px) {
+  .addBudget{
+    width: 100%;
+    margin-left:0 !important;
+    min-height: 10%;
+  }
+
+
+  .active.addBudgetForm{
+    display: inline-block !important;
+  }
+  .active.addBudget{
+    padding-top: 3%;
+    height:35%;
+    transition: height 100ms;
+  }
+
+  .keyNumbers h1{
+    font-size: 150% ;
+  }
+  .tableWrapper {
+    margin-bottom: 20%;
+  }
+}
+

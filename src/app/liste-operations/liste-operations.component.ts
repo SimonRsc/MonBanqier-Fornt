@@ -45,7 +45,7 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
       }
     );
 
-    this.listCompteService.emitSelectedMonth(null);
+     this.listCompteService.emitSelectedMonth(null);
 
   }
 
@@ -61,7 +61,7 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
       if (result.error) {
         $('.alertMain').text(result.message).addClass('alert-danger').removeClass('alert-success').show(1000);
       }
-      $(event.target).parent().parent().next().children().children().show();
+      this.hideForm(event, form);
       form.resetForm();
     }
   }
@@ -92,7 +92,7 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
   }
 
   hideForm(event, form: NgForm) {
-    $(event.target).closest('tr').next().show();
+    $(event.target).closest('tbody').children('.addOperationButton').show();
     $(event.target).closest('tr').find('input.clearableInput').val('');
     $(event.target).closest('tr').hide();
     form.resetForm();
@@ -117,10 +117,13 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
       if (result.error) {
         $('.alertMain').text(result.message).addClass('alert-danger').removeClass('alert-success').show(1000);
       } else {
+        $('.addBudgetForm').removeClass('active');
+        $('.addBudget').removeClass('active');
         $('.clearBudgetInput').val('');
+        $('div.mustNumber').hide();
+
         $('.addBudgetForm').hide().removeClass('d-flex').removeClass('justify-content-between');
         $('.ajoutBudget').show();
-        $('div.mustNumber').hide();
 
         form.resetForm();
       }
@@ -128,18 +131,21 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
   }
 
   addDefaultBudget() {
+
     this.listCompteService.getModelBudgets(this.selectedCompte.id).subscribe(async (data) => {
       const arr = [];
-      if (data == null || data.length === 0){
+      if (data == null || data.length === 0) {
         alert('Vous n\'avez aucun budget par défaut');
       }
-      for (const budget of data) {
-        await this.listCompteService.addBudget({
-          compteId: this.selectedCompte.id,
-          nom: budget.budgetNom,
-          montant: budget.budgetMontant,
-          model: false
-        });
+      if (confirm('Voulez vous ajouter ' + data.length + ' budget(s) par défaut lié(s) à ce compte')) {
+        for (const budget of data) {
+          await this.listCompteService.addBudget({
+            compteId: this.selectedCompte.id,
+            nom: budget.budgetNom,
+            montant: budget.budgetMontant,
+            model: false
+          });
+        }
       }
     });
   }
@@ -169,8 +175,6 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
 
     $('.addBudgetForm').hide().removeClass('d-flex').removeClass('justify-content-between');
     $('.ajoutBudget').show();
-
-
   }
 
  async  modifyBudget(form: NgForm, budgetId, event){
@@ -178,7 +182,7 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
       const params = { budgetId, nom: form.value.modificationNom, montant: form.value.modificationMontant};
       const result = await this.listCompteService.modifyBudget(params);
       if (result.error) {
-        $('.alertMain').text(result.message).addClass('alert-dawaitanger').removeClass('alert-success').show(1000);
+        $('.alertMainaddDefaultBudget').text(result.message).addClass('alert-dawaitanger').removeClass('alert-success').show(1000);
       }
       this.hideModificationForm(event);
     }
@@ -199,14 +203,14 @@ export class ListeOperationsComponent implements OnDestroy, OnInit {
     this.listCompteService.getShareLink().subscribe((link) => {
       $('#buttonShare').hide();
       const tmpElem = $('<div>');
-      tmpElem.css({position: 'absolute', left: '-1000px', top:      '-1000px',});
+      tmpElem.css({position: 'absolute', left: '-1000px', top:      '-1000px', });
       // Add the input value to the temp element.
       tmpElem.text(link.token);
       $('body').append(tmpElem);
       const range = document.createRange();
       // Select temp element.
       range.selectNodeContents(tmpElem.get(0));
-      let selection = window.getSelection ();
+      const selection = window.getSelection ();
       selection.removeAllRanges ();
       selection.addRange (range);
       // Lets copy.

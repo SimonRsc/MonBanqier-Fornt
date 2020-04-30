@@ -76,11 +76,11 @@
       </div>
 
       <form (ngSubmit)="addOperation(f,budget.id,$event)" #f="ngForm">
-        <table class="table table-responsive bg-white rounded shadow-sm">
+        <table class="table table-responsive-sm table-responsive-md bg-white rounded shadow-sm">
           <thead class="thead-custom">
           <tr>
-            <th  class="col-3 text-left budgetName">{{budget.nom}}</th>
-            <th  class="col-3 text-center">Total : {{budget.montant}}€</th>
+            <th  class="col-2 text-left budgetName">{{budget.nom}}</th>
+            <th  class="col-4 text-center">Total : {{budget.montant}}€</th>
             <th  class="col-4 text-center" >Restant :  <span [ngClass]="{negativeNumber:budget.montantRestant < 0 }"> {{budget.montantRestant}}€</span></th>
             <th  class=" text-right col-2">
               <img class="removeImgBudget" src="../../assets/pen.svg"
@@ -135,7 +135,7 @@
             </td>
 
           </tr>
-          <tr>
+          <tr class="addOperationButton">
             <td colspan="4" style="width: 100%;padding-right: 30%; padding-left: 30%;"><span
               class="ajoutOperation btn" (click)="showForm($event)" >Ajouter une opération ! </span></td>
           </tr>
