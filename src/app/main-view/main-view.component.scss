@@ -25,6 +25,7 @@ $firstColorHover: #03453D;
     min-height: 100vh;
     margin-left: -50%;
     transition: margin-left 200ms;
+    padding-bottom: 20%;
   }
   #sideBar.active {
     margin-left: 0%;
@@ -37,8 +38,8 @@ $firstColorHover: #03453D;
       content: '>';
     }
     background-color: #055E54;
-    height: 5%;
-    width: 5%;
+    height: 10%;
+    width: 15%;
     color: white;
 
 
@@ -47,13 +48,13 @@ $firstColorHover: #03453D;
     position: fixed;
     opacity: 0.75;
     left: 0;
-    top:47.5%;
+    top:40%;
   }
   #expandButton.active{
     &:before{
       content: '<';
     }
-    left:45%;
+    left:35%;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 0px;

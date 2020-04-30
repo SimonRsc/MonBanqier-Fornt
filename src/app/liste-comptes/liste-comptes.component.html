@@ -65,13 +65,15 @@
       </form>
       <hr>
       <label>Code de partage :</label>
-      <form (ngSubmit)="addShare(sf)" #sf="ngForm">
+      <form (ngSubmit)="addShare(sf)" #sf="ngForm" class="">
         <div class="form-row">
-          <div class="col-8"><input type="text" class="form-control" name="token" ngModel>
+          <div class="col-lg-8 col-12"><input type="text" class="form-control" name="token" ngModel>
             <small class="negativeNumber" id="shareError"> !</small>
           </div>
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary">Ajouter !</button>
+          <div class="col-lg-4 col-12">
+            <div class="form-group my-lg-0 my-2">
+              <button type="submit" class="btn btn-primary">Ajouter !</button>
+            </div>
           </div>
         </div>
       </form>
