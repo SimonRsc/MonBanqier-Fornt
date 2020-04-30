@@ -22,21 +22,25 @@
           </div>
         </div>
         <div class="compteModification">
-          <form class="d-flex justify-content-between" (ngSubmit)="modifyCompte(f,compte.id)" #f="ngForm">
-            <div class="formCompteModification">
-              <input type="text" name="compteNom" value="{{compte.nom}}" [ngModel]="compte.nom">
-              <input type="text" name="compteDescription" value="{{compte.description}}"
-                     [ngModel]="compte.description"/>
+          <form class="" (ngSubmit)="modifyCompte(f,compte.id)" #f="ngForm">
+            <div class="form-row">
+              <div class=" col-12 col-lg-7 form-row formCompteModification">
+                <input class="col-12  " type="text" name="compteNom" value="{{compte.nom}}" [ngModel]="compte.nom">
+                <input class="col-12 " type="text" name="compteDescription" value="{{compte.description}}"
+                       [ngModel]="compte.description"/>
+              </div>
+              <div class="text-lg-right  text-center col-lg-5 col-12 ">
+                <button class=" btnModifCompte btn btn-custom-primary" type="submit">Modifier</button>
+                <button class="  btnModifCompte btn btn-custom-primary" type="button"
+                        (click)="hideModificationForm($event)">Annuler
+                </button>
+                <button class="  btnModifCompte btn btn-custom-danger" type="button" (click)="deleteCompte(compte.id)">
+                  Supprimer
+                </button>
+              </div>
             </div>
-            <div class="text-right ">
-              <button class=" btnModifCompte btn btn-custom-primary" type="submit">Modifier</button>
-              <button class="  btnModifCompte btn btn-custom-primary" type="button"
-                      (click)="hideModificationForm($event)">Annuler
-              </button>
-              <button class="  btnModifCompte btn btn-custom-danger" type="button" (click)="deleteCompte(compte.id)">
-                Supprimer
-              </button>
-            </div>
+
+
           </form>
         </div>
       </li>

@@ -38,8 +38,8 @@ $firstColorHover: #03453D;
       content: '>';
     }
     background-color: #055E54;
-    height: 10%;
-    width: 15%;
+    height: 5%;
+    width: 5%;
     color: white;
 
 
@@ -48,13 +48,13 @@ $firstColorHover: #03453D;
     position: fixed;
     opacity: 0.75;
     left: 0;
-    top:40%;
+    top:47.5%;
   }
   #expandButton.active{
     &:before{
       content: '<';
     }
-    left:35%;
+    left:45%;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 0px;
