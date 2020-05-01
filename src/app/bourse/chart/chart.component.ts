@@ -18,7 +18,7 @@ export class ChartComponent implements OnInit {
     selectedGraph: any = 'Portefeuille';
 
     constructor(private bourseService: BourseService) {
-        Highcharts.theme = {
+     /*   const theme = {
             colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
                 '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
             chart: {
@@ -210,8 +210,8 @@ export class ChartComponent implements OnInit {
                 trackBackgroundColor: '#404043',
                 trackBorderColor: '#404043'
             }
-        };
-        Highcharts.setOptions(Highcharts.theme);
+        };*/
+       // Highcharts.setOptions( theme ) ;
 
     }
 
