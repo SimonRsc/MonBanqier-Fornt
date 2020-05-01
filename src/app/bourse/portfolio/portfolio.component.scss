@@ -1,0 +1,100 @@
+$firstColor: #055E54;
+$firstColorHover: #03453D;
+$firstColorBorder: #09AB98;
+$secondColor: #AB8C00;
+$secondColorHover: rgba(147, 121, 0);
+
+#portfolioWrapper{
+  padding-bottom: 5%;
+}
+.row{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+}
+.table{
+
+}
+.thead-custom {
+  background-color: #055E54;
+  color: white;
+  font-family: Montserrat, sans-serif;
+}
+.thead{
+  padding: 1%;
+
+  font-weight: bold;
+
+}
+
+.tbody{
+  div{
+    padding: 1.5%;
+    border-bottom: 1px solid #055E54;
+  }
+  &:nth-child(odd) {
+    background-color: rgba(208, 209, 210, 0.28);
+
+  }
+}
+
+.row.form{
+  padding: 1.5%;
+
+}
+.removeImg{
+  min-width: 20px;
+  width:5%
+}
+.btn-primary {
+   margin-bottom: 1%;
+   margin-top: 1%;
+   background: #055E54;
+   border: none;
+
+   &:hover, &:active, &:visited, &:focus {
+     background-color: $firstColorHover !important;
+     box-shadow: none !important;
+   }
+ }
+
+.form{
+  padding: 1.5%;
+  display: none;
+
+}
+.btn-custom {
+  margin-bottom: 1%;
+  margin-top: 1%;
+  margin-right: 1%;
+  background: white;
+  border: 1px solid $firstColor;
+  color: $firstColor;
+
+  &:hover, &:active, &:visited, &:focus {
+    background-color: $firstColor;
+    box-shadow: none !important;
+    color: white;
+
+  }
+}
+.negativeNumber {
+  color: #ff7075;
+}
+
+.positiveNumber{
+  color: rgb(136, 198, 72);
+}
+
+@media screen and (max-width: 991.98px) {
+
+  input{
+  width: 100% !important;
+}
+  .thead div{
+    padding: 2%;
+  }
+  .showForm{
+    padding: 2%;
+  }
+}

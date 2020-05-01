@@ -5,7 +5,7 @@ import {Compte} from '../model/compte.model';
 import {Budget} from '../model/budget.model';
 import {Operation} from '../model/operation.model';
 import {AuthentificationService} from './authentification.service';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class ListComptesService {
@@ -27,14 +27,12 @@ export class ListComptesService {
 
   }
 
-  async emitCompte() {
+  async emitCompte(){
     this.comptes = [];
     await this.getAllCompteFromUser();
     if (this.comptes !== null && this.comptes.length !== 0) {
       this.comptesSubject.next(this.comptes.slice());
-
     }
-
   }
 
   emitSelectedCompte(value) {

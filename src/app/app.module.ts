@@ -14,6 +14,7 @@ import {ListeComptesComponent} from './liste-comptes/liste-comptes.component';
 import {AuthentificationService} from './services/authentification.service';
 import {AuthGuard} from './services/authentification-guard.service';
 import {ListComptesService} from './services/list-comptes.service';
+import {BourseService} from './services/bourse.service';
 import {MainViewComponent} from './main-view/main-view.component';
 import {ListeOperationsComponent} from './liste-operations/liste-operations.component';
 import {ViewComponent} from './defaultBudget/view/view.component';
@@ -22,6 +23,9 @@ import {NavigationComponent} from './navigation/navigation.component';
 import {AuthInterceptor} from './services/authentificationInterceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BourseComponent } from './bourse/bourse.component';
+import { PortfolioComponent } from './bourse/portfolio/portfolio.component';
+import { ChartComponent } from './bourse/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { environment } from '../environments/environment';
     ListeOperationsComponent,
     ViewComponent,
     ModificationComponent,
-    NavigationComponent
+    NavigationComponent,
+    BourseComponent,
+    PortfolioComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AuthentificationService, ListComptesService, AuthGuard, {
+  providers: [AuthentificationService, ListComptesService, BourseService, AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
