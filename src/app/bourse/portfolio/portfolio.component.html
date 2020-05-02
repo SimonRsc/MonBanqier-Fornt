@@ -1,3 +1,27 @@
+<div *ngIf="masterPortfolio.cours !== null" class="row">
+    <div  class="col-lg-8 offset-lg-2 col-12 rounded keyNumbers " >
+        <div class="row shadow-sm bg-white  rounded keyNumbers">
+            <div class="col-4">
+                <h1 class="text-left">{{masterPortfolio.cours| number: '1.1-2'}}€</h1>
+                <hr>
+                <h5 class="text-left">Cours</h5>
+
+            </div>
+            <div class="col-4">
+                <h1 class="text-center" [ngClass]="{negativeNumber:masterPortfolio.value < 0, positiveNumber:masterPortfolio.value>=0}">{{masterPortfolio.value| number: '1.1-2'}} %</h1>
+                <hr>
+                <h5 class="text-center" > +/- value</h5>
+            </div>
+            <div class="col-4">
+                <h1 class="text-right">{{masterPortfolio.pru| number: '1.1-2'}}€</h1>
+                <hr>
+                <h5 class="text-right">PRU</h5>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div id="portfolioWrapper" class="row justify-content-center">
     <div class="col-lg-8 col-12">
 
@@ -18,7 +42,7 @@
                 <div class="col-4 col-lg-1 text-center">{{stock.pru | number:'1.1-4'}} €</div>
                 <div class="col-4 col-lg-1 text-center">{{stock.qte}}</div>
                 <div class="col-4 col-lg-2 text-center"><span [ngClass]="{negativeNumber:stock.gainPourcent < 0, positiveNumber :stock.gainPourcent >= 0 }">{{stock.gainPourcent | number: '1.1-2' }}% </span>
-                    ( {{stock.gain| number: '1.1-2'}}€ )
+                    <span class="d-block">( {{stock.gain| number: '1.1-2'}}€ )</span>
                 </div>
                 <div class=" col-4 col-lg-1  text-right">
                     <img class="removeImg" src="../../assets/remove.svg"
@@ -30,26 +54,56 @@
                 <div class="row">
                     <div class="col-6 col-lg-2 text-center">
                         <div class="form-inline">
-                            <label class="mr-1">Code ISN : </label>
-                            <input type="text" class="form-control w-50" name="code" required ngModel>
+                            <label class="mr-1 align-items-center">Code ISN : </label>
+
+                            <input type="search" class="form-control w-50" name="code" (change)="ISNChange($event)" required ngModel #code="ngModel">
+                            <div *ngIf="f.submitted && code.errors && code.errors.required">
+                                <small style="color:red">Code obligatoire</small>
+                            </div>
+                           <!-- <span class=" autoComplete  ">
+
+                            <div class="list-group-item list-group-flush autoCompleteContainer">
+                                   <small>
+                                       <button type="button" class="list-group-item list-group-item-action" *ngFor="let code of (filterIsn | async)">
+                                           {{code.symbol}}
+                                       </button>
+                                   </small>
+                            </div></span>-->
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Prix de revient :</label>
-                            <input type="text" class="form-control w-50" name="pru" required ngModel>
+                            <input type="text" class="form-control w-50 mustNumber" name="pru" inputmode="numeric" required ngModel #pru="ngModel">
+                            <div *ngIf="f.submitted && pru.errors && pru.errors.required">
+                                <small style="color:red">PRU obligatoire</small>
+                            </div>
+                            <div class="mustNumberError">
+                                <small style="color:red">Doit être un nombre</small>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6 col-lg-2 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Quantité :</label>
-                            <input type="text" class="form-control w-50" name="qte" required ngModel>
+                            <input type="text" class="mustNumber form-control w-50" name="qte"  inputmode="numeric" required ngModel #qte="ngModel">
+                            <div  class="mustNumberError">
+                            <small style="color:red">Doit être un nombre</small>
+                            </div>
+
+                            <div *ngIf="f.submitted && qte.errors && qte.errors.required">
+                                <small style="color:red">Quantite obligatoire</small>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Date d'achat :</label>
-                            <input type="date" class="form-control w-50" name="date" required ngModel>
+                            <input type="date" class="form-control w-50" name="date" required ngModel #date="ngModel">
+                            <div *ngIf="f.submitted && date.errors && date.errors.required">
+                                <small style="color:red">Date d'achat obligatoire</small>
+                            </div>
                         </div>
                     </div>
                     <div class="col-6 col-lg-1 text-center">
@@ -64,7 +118,7 @@
             </div>
             <div class="row showForm">
                 <div class="col-12 text-center">
-                    <button class="btn-custom btn" (click)="toggleForm()">Ajouter une action</button>
+                    <button class="btn-custom btn" type="button" (click)="toggleForm()">Ajouter une action</button>
                 </div>
             </div>
 

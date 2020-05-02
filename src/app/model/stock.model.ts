@@ -8,7 +8,12 @@ export class Stock {
 
     constructor(public id, public pru, public qte, public date, public data: any) {
         this.symbol = data.symbol;
-        this.nom = data.name;
+        if (this.symbol === 'AI.PA') {
+            this.nom = 'Air Liquide';
+        } else {
+            this.nom = data.name;
+        }
+
         this.cours = data.price;
         this.veillePourcent = data.changesPercentage;
         const montantInitial = parseFloat(this.pru) * parseInt(this.qte);

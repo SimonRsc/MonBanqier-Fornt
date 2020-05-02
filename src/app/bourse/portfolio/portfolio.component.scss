@@ -34,7 +34,9 @@ $secondColorHover: rgba(147, 121, 0);
   }
   &:nth-child(odd) {
     background-color: rgba(208, 209, 210, 0.28);
-
+  }
+  &:nth-child(even) {
+    background-color: white;
   }
 }
 
@@ -57,11 +59,31 @@ $secondColorHover: rgba(147, 121, 0);
      box-shadow: none !important;
    }
  }
+.autoComplete{
 
+
+}
+.autoCompleteContainer{
+border: 0;
+
+  small button{
+    width: 100%;
+  }
+}
 .form{
   padding: 1.5%;
   display: none;
 
+}
+.mustNumberError{
+  display: none;
+}
+
+.keyNumbers {
+  font-family: Montserrat,sans-serif;
+  color: #303030;
+  padding: 3%;
+  margin-bottom: 2%;
 }
 .btn-custom {
   margin-bottom: 1%;
@@ -87,7 +109,12 @@ $secondColorHover: rgba(147, 121, 0);
 }
 
 @media screen and (max-width: 991.98px) {
-
+  .keyNumbers h1{
+    font-size: 100% ;
+  }
+  .keyNumbers h5{
+    font-size: 80%;
+  }
   input{
   width: 100% !important;
 }
