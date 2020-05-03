@@ -1,6 +1,6 @@
 <div *ngIf="masterPortfolio.cours !== null" class="row">
     <div  class="col-lg-8 offset-lg-2 col-12 rounded keyNumbers " >
-        <div class="row shadow-sm bg-white  rounded keyNumbers">
+        <div class="row   rounded keyNumbers shadow-custom "style="background-color: #3e3e40 ;color:white"  >
             <div class="col-4">
                 <h1 class="text-left">{{masterPortfolio.cours| number: '1.1-2'}}€</h1>
                 <hr>
@@ -25,11 +25,11 @@
 <div id="portfolioWrapper" class="row justify-content-center">
     <div class="col-lg-8 col-12">
 
-        <form class="shadow" (ngSubmit)="addStock(f)" #f="ngForm">
+        <form class="shadow-custom" (ngSubmit)="addStock(f)" #f="ngForm">
             <div class="row thead-custom thead ">
                 <div class="col-12 col-lg-3 text-center my-auto">Nom</div>
                 <div class="col-4 col-lg-2 text-center my-auto">Cours</div>
-                <div class="col-4 col-lg-2  text-center my-auto">Var. Veille</div>
+                <div class="col-4 col-lg-1  text-center my-auto">Var. Veille</div>
                 <div class="col-4 col-lg-1  text-center my-auto">PRU</div>
                 <div class="col-4 col-lg-1  text-center my-auto">Quantité</div>
                 <div class="col-7 col-lg-2 text-center my-auto">+/- values</div>
@@ -38,11 +38,11 @@
             <div class="row tbody " *ngFor="let stock of portfolio">
                 <div class="col-12 col-lg-3 text-center">{{stock.nom}} ({{stock.symbol}})</div>
                 <div class="col-4 col-lg-2 text-center"> {{stock.cours}}€</div>
-                <div class="col-4 col-lg-2 text-center"><span [ngClass]="{negativeNumber:stock.veillePourcent < 0,positiveNumber :stock.veillePourcent >= 0}"> {{stock.veillePourcent | number: '1.1-2'}} %</span></div>
-                <div class="col-4 col-lg-1 text-center">{{stock.pru | number:'1.1-4'}} €</div>
+                <div class="col-4 col-lg-1 text-center"><span [ngClass]="{negativeNumber:stock.veillePourcent < 0,positiveNumber :stock.veillePourcent >= 0}"> {{stock.veillePourcent | number: '1.1-2'}} %</span></div>
+                <div class="col-4 col-lg-2 text-center">{{stock.pru | number:'1.1-4'}} €</div>
                 <div class="col-4 col-lg-1 text-center">{{stock.qte}}</div>
                 <div class="col-4 col-lg-2 text-center"><span [ngClass]="{negativeNumber:stock.gainPourcent < 0, positiveNumber :stock.gainPourcent >= 0 }">{{stock.gainPourcent | number: '1.1-2' }}% </span>
-                    <span class="d-block">( {{stock.gain| number: '1.1-2'}}€ )</span>
+                    <span >( {{stock.gain| number: '1.1-2'}}€ )</span>
                 </div>
                 <div class=" col-4 col-lg-1  text-right">
                     <img class="removeImg" src="../../assets/remove.svg"
@@ -56,7 +56,7 @@
                         <div class="form-inline">
                             <label class="mr-1 align-items-center">Code ISN : </label>
 
-                            <input type="search" class="form-control w-50" name="code" (change)="ISNChange($event)" required ngModel #code="ngModel">
+                            <input type="search" class="form-control w-100" name="code" (change)="ISNChange($event)" required ngModel #code="ngModel">
                             <div *ngIf="f.submitted && code.errors && code.errors.required">
                                 <small style="color:red">Code obligatoire</small>
                             </div>
@@ -74,7 +74,7 @@
                     <div class="col-6 col-lg-3 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Prix de revient :</label>
-                            <input type="text" class="form-control w-50 mustNumber" name="pru" inputmode="numeric" required ngModel #pru="ngModel">
+                            <input type="text" class="form-control w-100 mustNumber" name="pru" inputmode="numeric" required ngModel #pru="ngModel">
                             <div *ngIf="f.submitted && pru.errors && pru.errors.required">
                                 <small style="color:red">PRU obligatoire</small>
                             </div>
@@ -86,7 +86,7 @@
                     <div class="col-6 col-lg-2 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Quantité :</label>
-                            <input type="text" class="mustNumber form-control w-50" name="qte"  inputmode="numeric" required ngModel #qte="ngModel">
+                            <input type="text" class="mustNumber form-control w-100" name="qte"  inputmode="numeric" required ngModel #qte="ngModel">
                             <div  class="mustNumberError">
                             <small style="color:red">Doit être un nombre</small>
                             </div>
@@ -97,22 +97,21 @@
 
                         </div>
                     </div>
-                    <div class="col-6 col-lg-3 text-center">
+                    <div class="col-6 col-lg-2 text-center">
                         <div class="form-inline">
                             <label class="mr-1">Date d'achat :</label>
-                            <input type="date" class="form-control w-50" name="date" required ngModel #date="ngModel">
+                            <input type="date" class="form-control w-100" name="date" required ngModel #date="ngModel">
                             <div *ngIf="f.submitted && date.errors && date.errors.required">
                                 <small style="color:red">Date d'achat obligatoire</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-1 text-center">
-                        <button class="btn btn-primary" type="submit">
+                    <div class="col-6 col-lg-3  d-inline-block my-auto text-center">
+                        <button class="btn btn-primary h-75 mx-3" type="submit">
                             Ajouter
                         </button>
-                    </div>
-                    <div class="col-6 col-lg-1 text-center">
-                    <button type="reset" class="btn btn-secondary" (click)="toggleForm()"> Annuler</button>
+
+                    <button type="reset" class="btn btn-primary-custom h-75" (click)="toggleForm()"> Annuler</button>
                     </div>
                 </div>
             </div>

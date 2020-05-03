@@ -2,3 +2,12 @@
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+.shadow-custom{
+  box-shadow: 0 2px 2px 0 #3e3e40,
+  0 2px 2px 0 #3e3e40;
+}
+
+select, option{
+  color: white;
+  background-color: transparent;
+}

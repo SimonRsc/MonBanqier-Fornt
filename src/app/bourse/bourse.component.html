@@ -1,7 +1,22 @@
+<div class="wrapper">
+    <div id="sideBar">
+        <div>
+
+            <img src="../../assets/piggy-white.png" alt="" style="width:15%; display: inline-block">
+            <h1 class="brandName">Mon Banquier</h1>
+
+        </div>    </div>
+    <div id="expandButton" class="d-flex align-items-center justify-content-center" (click)="toggleSidebar()" style="cursor: pointer; z-index: 1">
+        <div id="expandWay" (click)="toggleSidebar()">  </div>
+    </div>
 <div class="container-fluid">
     <app-navigation></app-navigation>
 
     <app-portfolio></app-portfolio>
 
     <app-chart></app-chart>
+</div>
+    <div id="filtre" (click)="toggleSidebar()"></div>
+
+
 </div>
