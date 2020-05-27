@@ -33,7 +33,7 @@ export class BourseService {
             for (const stock of data.stock) {
                 this.requestedStocks = this.requestedStocks.concat(stock.stockCode + ',');
             }
-            const dataRequest = this.http.get<any>(this.apiUrl + this.requestedStocks);
+            const dataRequest = this.http.get<any>(this.apiUrl + this.requestedStocks + '?apikey=d2633ea19676843cc65f05ee1922e9b6');
 
             dataRequest.subscribe((realTimeData) => {
                 this.portfolio = [];
@@ -56,7 +56,7 @@ export class BourseService {
         const pruPortfolio = new Map();
         let pru = 0;
         for (const stock of this.portfolio) {
-            const data = await this.http.get<any>(this.histUrl + stock.symbol + '?serietype=line&from=' + stock.date).toPromise();
+            const data = await this.http.get<any>(this.histUrl + stock.symbol + '?serietype=line&from=' + stock.date + '&apikey=d2633ea19676843cc65f05ee1922e9b6').toPromise();
             this.histData.push(new HistData(stock.symbol, stock.qte, stock.pru, data.historical));
             pru += stock.qte * stock.pru;
             for (const hist of data.historical) {
